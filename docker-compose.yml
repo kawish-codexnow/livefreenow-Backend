@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+    livefreenow:
+        restart: always
+        build: .
+        volumes:
+            - ./:/usr/src/app
+#            - /home/codexnow/Desktop/certs:/usr/src/app/certs
+#            - /home/codexnow/Desktop/iponymData:/usr/src/app/iponymData
+#            - /home/codexnow/Desktop/templates:/usr/src/app/templates
+            - /home/anwar/livefreenow/livefreenow.us:/usr/src/app/certs
+            - /home/anwar/iponymData:/usr/src/app/iponymData
+            - /home/anwar/templates:/usr/src/app/templates
+        ports:
+            - 5003:5003
+        network_mode: bridge
+        command: bash -c "SHARD=livefreenowapis python3 manage.py runsslserver 0:5003 --certificate ./certs/livefreenow.crt --key ./certs/livefreenow.key"
