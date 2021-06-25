@@ -9,7 +9,7 @@ class search_portal():
 
     def __init__(self):
 
-        self.df = pd.read_csv('./iponymData/csvstore/search_portal_data20210611_1.csv')
+        self.df = pd.read_csv('./iponymData/csvstore/search_portal_data20210625.csv')
         self.df.columns = ["Case.#", "Final Determination", "Clinical Summary",
                            "Determination Summary", "Decision Explanation", "Body Part", "Decision", "Date"]
         self.df = self.df.astype(str)
